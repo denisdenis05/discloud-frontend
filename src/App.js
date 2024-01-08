@@ -1,30 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
 import jsonData from './data/data.json';
+import LoggedInScreen from './screens/loggedInScreen.js'
+import NotLoggedInScreen from './screens/notLoggedInScreen.js'
 
 
 function App() {
-    if(jsonData.loggedIn == true)
-        return 
-  return (
-    <div className="App">
-      <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-        <h1>DisCloud</h1>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    if (jsonData.loggedIn == true)
+        return LoggedInScreen()
+    else
+        return NotLoggedInScreen()
 }
 
 export default App;
