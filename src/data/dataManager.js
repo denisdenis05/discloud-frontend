@@ -14,31 +14,40 @@ export const DataManager = class{
 
     RemoveLoginData(){
         this.GetJsonData()
-        this.jsonData.loggedIn = false
-        this.jsonData.userDetails = {}
+        this.InitializeWithStandardJson()
         this.SaveJsonData()
+    }
+
+    IsConnectedToDiscord(){
+        return this.jsonData.loggedIn
     }
 
     SaveJsonData() {
         const indentationSpaces = 2
         const jsonString = JSON.stringify(this.jsonData, null, indentationSpaces);
-        localStorage.setItem('myData', jsonString);
+        localStorage.setItem('loginData', jsonString);
 
     }
 
+    InitializeWithStandardJson(){
+        this.jsonData = {
+            "loggedIn": false,
+            "userDetails": {}
+        }
+    }
+
     GetJsonData(){
-        const savedData = localStorage.getItem('myData');
-        console.log(savedData)
-        if (savedData == null) {
+        const savedData = localStorage.getItem('loginData');
+        if (savedData != null) {
             try {
                 this.jsonData = JSON.parse(savedData);
             }
             catch{
-                this.jsonData = {
-                    "loggedIn": false,
-                    "userDetails": {}
-                }
+                this.InitializeWithStandardJson()
             }
         }
+        else
+            this.InitializeWithStandardJson()
+
     }
 };

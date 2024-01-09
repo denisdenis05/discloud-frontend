@@ -10,6 +10,7 @@ function NotLoggedInScreen(dataManager) {
     };
     function logIn() {
         dataManager.SaveNewLoginData(inputValue);
+        window.location.reload();
     }
 
     return (
