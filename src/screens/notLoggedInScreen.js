@@ -2,14 +2,14 @@ import logo from '../logo.svg';
 import '../App.css';
 import {useState} from "react";
 
-function NotLoggedInScreen() {
+function NotLoggedInScreen(dataManager) {
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     };
     function logIn() {
-        console.log("sandman" + inputValue);
+        dataManager.SaveNewLoginData(inputValue);
     }
 
     return (
