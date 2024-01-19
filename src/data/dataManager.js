@@ -1,29 +1,29 @@
 
 export const DataManager = class{
     constructor() {
-        this.jsonData = null
-        this.GetJsonData()
+        this.jsonData = null;
+        this.GetJsonData();
     }
 
     SaveNewLoginData(loginData) {
-        this.GetJsonData()
-        this.jsonData.loggedIn = true
-        this.jsonData.userDetails.botId = loginData
-        this.SaveJsonData()
+        this.GetJsonData();
+        this.jsonData.loggedIn = true;
+        this.jsonData.userDetails.botId = loginData;
+        this.SaveJsonData();
     }
 
     RemoveLoginData(){
-        this.GetJsonData()
-        this.InitializeWithStandardJson()
-        this.SaveJsonData()
+        this.GetJsonData();
+        this.InitializeWithStandardJson();
+        this.SaveJsonData();
     }
 
     IsConnectedToDiscord(){
-        return this.jsonData.loggedIn
+        return this.jsonData.loggedIn;
     }
 
     SaveJsonData() {
-        const indentationSpaces = 2
+        const indentationSpaces = 2;
         const jsonString = JSON.stringify(this.jsonData, null, indentationSpaces);
         localStorage.setItem('loginData', jsonString);
 
@@ -33,7 +33,7 @@ export const DataManager = class{
         this.jsonData = {
             "loggedIn": false,
             "userDetails": {}
-        }
+        };
     }
 
     GetJsonData(){
@@ -43,11 +43,11 @@ export const DataManager = class{
                 this.jsonData = JSON.parse(savedData);
             }
             catch{
-                this.InitializeWithStandardJson()
+                this.InitializeWithStandardJson();
             }
         }
         else
-            this.InitializeWithStandardJson()
+            this.InitializeWithStandardJson();
 
     }
 };

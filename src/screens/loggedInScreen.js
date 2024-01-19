@@ -3,9 +3,6 @@ import {sendPostRequest} from "../workers/requests"
 
 
 function LoggedInScreen() {
-    const linkToRequest = 'http://localhost:5000/login'
-    let discordToken = 'dgvu3e73ubdjd33'
-    sendPostRequest(discordToken, linkToRequest)
     return (
         <div className="h-lvh flex items-center justify-center bg-slate-700">
             <img src={logo} className="w-32 animate-spin fixed top-5 left-5 " alt="logo" />
