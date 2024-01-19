@@ -1,28 +1,44 @@
-import LoggedInScreen from './screens/loggedInScreen.js'
-import NotLoggedInScreen from './screens/notLoggedInScreen.js'
-import {DataManager} from "./data/dataManager"
-import {checkIfServerIsConnectedToDiscord} from "./workers/handleDiscordConnexion";
-
-
-function Main(dataManager)
-{
-    (async () => {
-        await checkIfServerIsConnectedToDiscord(dataManager);
-        if (dataManager.IsConnectedToDiscord() == true)
-            return LoggedInScreen(dataManager);
-        else
-            return NotLoggedInScreen(dataManager);
-    })();
-}
+import LoggedInScreen from './screens/loggedInScreen.js';
+import NotLoggedInScreen from './screens/notLoggedInScreen.js';
+import LoadingScreen from './screens/loadingScreen';
+import ErrorScreen from './screens/errorScreen';
+import { DataManager } from './data/dataManager';
+import { checkIfServerIsConnectedToDiscord } from './workers/handleDiscordConnexion';
+import { useEffect, useMemo, useState } from 'react';
 
 function App() {
-    let dataManager = new DataManager();
-    try{
-        return (async () => {Main(dataManager)})();
+    const dataManager = useMemo(() => new DataManager(), []);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await checkIfServerIsConnectedToDiscord(dataManager);
+                setIsLoggedIn(dataManager.IsConnectedToDiscord());
+            } catch (error) {
+                setError(error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchData();
+    }, [dataManager]);
+
+    if (isLoading) {
+        return LoadingScreen();
     }
-    catch (error) {
-        console.error('Error in synchronousFunction:', error);
+
+    if (error) {
+        return ErrorScreen(error);
     }
+
+    if (isLoggedIn) {
+        return LoggedInScreen(dataManager);
+    }
+
+    return NotLoggedInScreen(dataManager);
 }
 
 export default App;
