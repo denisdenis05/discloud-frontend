@@ -1,11 +1,11 @@
 import logo from '../images/logo.svg';
-import {sendPostRequest} from "../workers/requests"
+import {disconnectFromDiscord} from "../workers/handleDiscordConnexion";
 
 
 
 function LoggedInScreen(dataManager) {
     function logOut() {
-        dataManager.RemoveLoginData();
+        (async () => { await disconnectFromDiscord(dataManager); })();
         window.location.reload();
     }
     return (

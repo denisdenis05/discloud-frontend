@@ -8,7 +8,7 @@ export const DataManager = class{
     SaveNewLoginData(loginData) {
         this.GetJsonData();
         this.jsonData.loggedIn = true;
-        this.jsonData.userDetails.botId = loginData;
+        this.jsonData.userDetails.token = loginData;
         this.SaveJsonData();
     }
 

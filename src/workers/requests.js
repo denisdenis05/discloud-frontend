@@ -5,7 +5,7 @@ export async function sendPostRequest(content, link) {
         const requestOptions = {
             method: "POST",
             headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({content: content})
+            body: JSON.stringify(content)
         }
 
         const response = await fetch(link, requestOptions);

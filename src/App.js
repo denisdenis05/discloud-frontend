@@ -11,6 +11,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [inputValue, setInputValue] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +39,7 @@ function App() {
         return LoggedInScreen(dataManager);
     }
 
-    return NotLoggedInScreen(dataManager);
+    return NotLoggedInScreen(dataManager, inputValue, setInputValue);
 }
 
 export default App;
