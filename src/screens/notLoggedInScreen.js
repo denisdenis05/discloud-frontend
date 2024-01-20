@@ -7,10 +7,21 @@ function NotLoggedInScreen(dataManager, inputValue, setInputValue) {
         setInputValue(e.target.value);
     };
 
+
     function logIn() {
-        (async () => { await connectToDiscord(dataManager, inputValue); })();
-        window.location.reload();
+        function checkIfInputIsOk(){
+            if (inputValue.length > 3)
+                return true
+            return false
+        }
+        if (checkIfInputIsOk()) {
+            (async () => {
+                await connectToDiscord(dataManager, inputValue);
+            })();
+            window.location.reload();
+        }
     }
+
 
     return (
         <div className="h-lvh flex items-center justify-center bg-slate-700">
