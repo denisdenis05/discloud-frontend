@@ -2,6 +2,7 @@ import logo from '../images/logo.svg';
 import {connectToDiscord} from "../workers/handleDiscordConnexion";
 
 function NotLoggedInScreen(dataManager, inputValue, setInputValue) {
+    console.log("UESSSSS")
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -23,6 +24,7 @@ function NotLoggedInScreen(dataManager, inputValue, setInputValue) {
     }
 
 
+    console.log("UESSSSS")
     return (
         <div className="h-lvh flex items-center justify-center bg-slate-700">
             <div className="flex flex-col items-center justify-center text-white text-lg">

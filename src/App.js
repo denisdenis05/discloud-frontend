@@ -38,7 +38,6 @@ function App() {
     if (isLoggedIn) {
         return LoggedInScreen(dataManager);
     }
-
     return NotLoggedInScreen(dataManager, inputValue, setInputValue);
 }
 
