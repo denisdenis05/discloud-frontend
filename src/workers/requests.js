@@ -19,6 +19,24 @@ export async function sendPostRequest(content, link) {
     }
 }
 
+export async function sendFilePostRequest(content, link) {
+    try {
+        const requestOptions = {
+            method: "POST",
+            body: content
+        }
+
+        const response = await fetch(link, requestOptions);
+        const retrievedData = await response.json();
+
+        console.log(retrievedData);
+        return retrievedData;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
+
 export async function sendGetRequest(link) {
     try {
         const requestOptions = {

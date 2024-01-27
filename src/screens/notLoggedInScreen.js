@@ -1,8 +1,8 @@
 import logo from '../images/logo.svg';
 import {connectToDiscord} from "../workers/handleDiscordConnexion";
 
-function NotLoggedInScreen(dataManager, inputValue, setInputValue) {
-    console.log("UESSSSS")
+
+function NotLoggedInScreen(dataManager, inputValue, setInputValue, setPageNumber) {
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -16,6 +16,9 @@ function NotLoggedInScreen(dataManager, inputValue, setInputValue) {
             return false
         }
         if (checkIfInputIsOk()) {
+            const homePage = 0;
+            setPageNumber(homePage);
+
             (async () => {
                 await connectToDiscord(dataManager, inputValue);
             })();
@@ -23,14 +26,13 @@ function NotLoggedInScreen(dataManager, inputValue, setInputValue) {
         }
     }
 
-
-    console.log("UESSSSS")
     return (
         <div className="h-lvh flex items-center justify-center bg-slate-700">
             <div className="flex flex-col items-center justify-center text-white text-lg">
                 <img src={logo} className="w-32 animate-spin fixed top-5 left-5 " alt="logo" />
                 <h1 className="font-bold text-3xl m-1">DisCloud</h1>
                 <p>Input your discord bot token to start</p>
+                <p className="text-xs">The bot should be a new one, as it will create a clean discord server</p>
                 <br></br>
                 <input
                     className="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

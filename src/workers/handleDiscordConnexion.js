@@ -1,5 +1,4 @@
-import {sendPostRequest} from "./requests";
-import {sendGetRequest} from "./requests";
+import {sendFilePostRequest, sendPostRequest, sendGetRequest} from "./requests";
 
 
 export async function checkIfServerIsConnectedToDiscord(dataManager) {
@@ -19,5 +18,10 @@ export async function connectToDiscord(dataManager, token){
     dataManager.SaveNewLoginData(token);
     const dataToSend = {"token": token}
     await sendPostRequest(dataToSend, "http://127.0.0.1:5000/api/connectToDiscord");
+}
+
+export async function uploadFileToDiscord(dataManager, fileData)
+{
+    await sendFilePostRequest(fileData, "http://127.0.0.1:5000/api/uploadFile");
 
 }
