@@ -1,7 +1,6 @@
 import logo from '../images/logo.svg';
 import {connectToDiscord} from "../workers/handleDiscordConnexion";
 
-
 function NotLoggedInScreen(dataManager, inputValue, setInputValue, setPageNumber) {
 
     const handleInputChange = (e) => {
@@ -25,6 +24,7 @@ function NotLoggedInScreen(dataManager, inputValue, setInputValue, setPageNumber
             window.location.reload();
         }
     }
+
 
     return (
         <div className="h-lvh flex items-center justify-center bg-slate-700">

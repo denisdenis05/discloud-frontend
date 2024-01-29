@@ -1,24 +1,35 @@
 import logo from '../images/logo.svg';
 import {uploadFileToDiscord} from "../workers/handleDiscordConnexion";
 
-function UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile) {
+function UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile, uploadingFile, setUploadingState) {
 
-    function uploadFile(){
+    const uploadFile = async () => {
         if (selectedFile) {
             const formData = new FormData();
             formData.append('file', selectedFile);
-            (async () => { await uploadFileToDiscord(dataManager, formData); })();
+            setUploadingState(true);
 
-            const waitUntilFileIsUploaded = 2;
-            setPageNumber(waitUntilFileIsUploaded);
+            try {
+                await uploadFileToDiscord(dataManager, formData);
+                window.location.reload();
+            } finally {
+                setUploadingState(false);
+            }
         }
-    }
+    };
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         setSelectedFile(file);
     };
 
+    let buttonAttributes;
+    if (!buttonAttributes) {
+        buttonAttributes = `bg-green-600 hover:bg-green-950 text-white font-bold py-1 px-2 rounded m-2`;
+    }
+    else {
+        buttonAttributes = `bg-grey-600 text-white font-bold py-1 px-2 rounded m-2`;
+    }
 
     return (
         <div className="h-lvh flex items-center justify-center bg-slate-700">
@@ -30,8 +41,12 @@ function UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile) 
                     onChange={handleFileChange}
                     className="px-4 py-2 border rounded"
                 />
-                <button  className="bg-green-300 hover:bg-green-950 text-white font-bold py-1 px-2 rounded m-2"
-                         onClick={uploadFile}>Upload</button>
+                <button
+                    disabled={uploadingFile}
+                    className={buttonAttributes}
+                    onClick={uploadFile}>
+                    Upload
+                </button>
             </div>
         </div>
     );

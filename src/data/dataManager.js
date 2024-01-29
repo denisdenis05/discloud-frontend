@@ -29,6 +29,10 @@ export const DataManager = class{
 
     }
 
+    SaveUploadedFiles(storedFiles){
+        localStorage.setItem('storedFiles', JSON.stringify(storedFiles));
+    }
+
     InitializeWithStandardJson(){
         this.jsonData = {
             "loggedIn": false,

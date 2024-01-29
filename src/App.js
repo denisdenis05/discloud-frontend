@@ -15,7 +15,7 @@ function App() {
     const [inputValue, setInputValue] = useState('');
     const [pageNumber, setPageNumber] = useState(0);
     const [selectedFile, setSelectedFile] = useState(null);
-
+    const [uploadingFile, setUploadingState] = useState(false);
 
 
     useEffect(() => {
@@ -47,7 +47,7 @@ function App() {
             return LoggedInScreen(dataManager, setPageNumber);
         }
         else if (pageNumber == uploadPage){
-            return UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile)
+            return UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile, uploadingFile, setUploadingState)
         }
         else
         {

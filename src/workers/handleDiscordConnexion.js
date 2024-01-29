@@ -7,6 +7,8 @@ export async function checkIfServerIsConnectedToDiscord(dataManager) {
         return;
     if (returnedData.isLoggedIn == true)
         dataManager.SaveNewLoginData();
+    if (returnedData.storedFiles != {})
+        dataManager.SaveUploadedFiles(returnedData.storedFiles);
 }
 
 export async function disconnectFromDiscord(dataManager) {

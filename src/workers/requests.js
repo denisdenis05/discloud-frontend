@@ -11,7 +11,6 @@ export async function sendPostRequest(content, link) {
         const response = await fetch(link, requestOptions);
         const retrievedData = await response.json();
 
-        console.log(retrievedData);
         return retrievedData;
     } catch (error) {
         console.error('Error:', error);
@@ -29,7 +28,6 @@ export async function sendFilePostRequest(content, link) {
         const response = await fetch(link, requestOptions);
         const retrievedData = await response.json();
 
-        console.log(retrievedData);
         return retrievedData;
     } catch (error) {
         console.error('Error:', error);
@@ -46,8 +44,6 @@ export async function sendGetRequest(link) {
 
         const response = await fetch(link, requestOptions);
         const retrievedData = await response.json();
-
-        console.log(retrievedData);
         return retrievedData;
     } catch (error) {
         console.error('Error:', error);
