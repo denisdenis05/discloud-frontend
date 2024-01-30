@@ -22,8 +22,16 @@ export async function connectToDiscord(dataManager, token){
     await sendPostRequest(dataToSend, "http://127.0.0.1:5000/api/connectToDiscord");
 }
 
+export async function deleteFileDiscord(fileId)
+{
+    console.log(fileId)
+    const dataToSend = {"fileId": fileId}
+    await sendPostRequest(dataToSend, "http://127.0.0.1:5000/api/deleteFile");
+}
+
+
+
 export async function uploadFileToDiscord(dataManager, fileData)
 {
     await sendFilePostRequest(fileData, "http://127.0.0.1:5000/api/uploadFile");
-
 }
