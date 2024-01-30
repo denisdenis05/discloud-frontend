@@ -7,6 +7,13 @@
 
 #### <code style="color : red">Disclaimer: This is against Discord's ToS. I am building this for learning purposes</code>
 
+<br>
+
+## You will also need the backend repository
+https://github.com/denisdenis05/DisCloud-backend/
+
+<br>
+
 ## Login Screen:
 ![Login screen](https://imgur.com/HX367ro.png)
 
