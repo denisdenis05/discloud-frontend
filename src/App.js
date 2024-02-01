@@ -44,10 +44,10 @@ function App() {
         const homePage = 0;
         const uploadPage = 1;
         if (pageNumber == homePage) {
-            return LoggedInScreen(dataManager, setPageNumber);
+            return LoggedInScreen(dataManager, setPageNumber, setIsLoading);
         }
         else if (pageNumber == uploadPage){
-            return UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile, uploadingFile, setUploadingState)
+            return UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile, uploadingFile, setUploadingState, setIsLoading)
         }
         else
         {

@@ -4,7 +4,7 @@ import {createDownloadButtons} from "../workers/createDownloadButtons";
 
 
 
-function LoggedInScreen(dataManager, setPageNumber) {
+function LoggedInScreen(dataManager, setPageNumber, setIsLoading) {
     function logOut() {
 
         (async () => { await disconnectFromDiscord(dataManager); })();
@@ -16,7 +16,7 @@ function LoggedInScreen(dataManager, setPageNumber) {
         setPageNumber(uploadPage);
     }
 
-    const  divsWithDownloadButtons = createDownloadButtons();
+    const  divsWithDownloadButtons = createDownloadButtons(setIsLoading);
 
     return (
         <div className="flex items-center justify-center bg-slate-700">

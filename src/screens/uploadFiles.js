@@ -1,19 +1,19 @@
 import logo from '../images/logo.svg';
 import {uploadFileToDiscord} from "../workers/handleDiscordConnexion";
 
-function UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile, uploadingFile, setUploadingState) {
+function UploadFiles(dataManager, setPageNumber, selectedFile, setSelectedFile, uploadingFile, setUploadingState, setIsLoading) {
 
     const uploadFile = async () => {
         if (selectedFile) {
+            setIsLoading(true)
             const formData = new FormData();
             formData.append('file', selectedFile);
-            setUploadingState(true);
 
             try {
                 await uploadFileToDiscord(dataManager, formData);
                 window.location.reload();
             } finally {
-                setUploadingState(false);
+                setIsLoading(false)
             }
         }
     };

@@ -1,17 +1,20 @@
 import {deleteFileDiscord, downloadFileDiscord} from "./handleDiscordConnexion";
 
-export function createDownloadButtons() {
+export function createDownloadButtons(setIsLoading) {
     const storedFiles = JSON.parse(localStorage.getItem('storedFiles'));
     let dynamicDivs = [];
 
     async function deleteFile(fileId){
+        setIsLoading(true)
         await deleteFileDiscord(fileId);
+        setIsLoading(false)
         window.location.reload();
     }
 
     async function downloadFile(fileId){
+        setIsLoading(true)
         await downloadFileDiscord(fileId);
-        console.log(fileId)
+        setIsLoading(false)
     }
 
     for (let key in storedFiles) {

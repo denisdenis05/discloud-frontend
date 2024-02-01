@@ -1,21 +1,21 @@
-### [Still in work]
-
 # Discloud
 ### A personal project: uploads your files to discord
 ### FRONTEND REPO
 <br>
 
-#### <code style="color : red">Disclaimer: This is against Discord's ToS. I am building this for learning purposes</code>
+#### <code style"color : red">Disclaimer: This is against Discord's ToS. I am building this for learning purposes</code>
 
 <br>
 
 ## You will also need the backend repository
 https://github.com/denisdenis05/DisCloud-backend/
 
+More details about how does this work on the backend repo
+
 <br>
 
 ## Login Screen:
-![Login screen](https://imgur.com/HX367ro.png)
+[![Login screen](https://imgur.com/HX367ro.png)]()
 
 <br>
 
