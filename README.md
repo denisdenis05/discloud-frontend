@@ -3,7 +3,7 @@
 ### FRONTEND REPO
 <br>
 
-#### <code style"color : red"> Disclaimer: This is against Discord's ToS. I am building this for learning purposes </code>
+#### <code style="color : red"> Disclaimer: This is against Discord's ToS. I am building this for learning purposes </code>
 
 <br>
 
