@@ -1,4 +1,4 @@
-import {deleteFileDiscord} from "./handleDiscordConnexion";
+import {deleteFileDiscord, downloadFileDiscord} from "./handleDiscordConnexion";
 
 export function createDownloadButtons() {
     const storedFiles = JSON.parse(localStorage.getItem('storedFiles'));
@@ -9,8 +9,8 @@ export function createDownloadButtons() {
         window.location.reload();
     }
 
-    function downloadFile(fileId){
-        console.log("downloading file")
+    async function downloadFile(fileId){
+        await downloadFileDiscord(fileId);
         console.log(fileId)
     }
 

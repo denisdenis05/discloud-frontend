@@ -1,4 +1,4 @@
-import {sendFilePostRequest, sendPostRequest, sendGetRequest} from "./requests";
+import {sendFilePostRequest, sendPostRequest, sendGetRequest, sendDownloadFileRequest} from "./requests";
 
 
 export async function checkIfServerIsConnectedToDiscord(dataManager) {
@@ -27,6 +27,13 @@ export async function deleteFileDiscord(fileId)
     console.log(fileId)
     const dataToSend = {"fileId": fileId}
     await sendPostRequest(dataToSend, "http://127.0.0.1:5000/api/deleteFile");
+}
+
+export async function downloadFileDiscord(fileId)
+{
+    console.log(fileId)
+    const dataToSend = {"fileId": fileId}
+    await sendDownloadFileRequest(dataToSend, "http://127.0.0.1:5000/api/downloadFile");
 }
 
 
