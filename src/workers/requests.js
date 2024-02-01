@@ -44,11 +44,19 @@ export async function sendDownloadFileRequest(content, link){
         }
 
         const response = await fetch(link, requestOptions);
+
+        const contentDisposition = response.headers.get("Content-Disposition");
+        const filename = contentDisposition
+            ? contentDisposition.split("filename=")[1]
+            : "downloaded_file.png";
+
+
+
         const blob = await response.blob();
 
         const linkToClick = document.createElement("a");
         linkToClick.href = URL.createObjectURL(blob);
-        linkToClick.download = "downloaded_file.png";
+        linkToClick.download = filename;
         document.body.appendChild(linkToClick);
         linkToClick.click();
         document.body.removeChild(linkToClick);
